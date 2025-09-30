@@ -10,9 +10,6 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="{{ route('home.main') }}">Beranda</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="./about_me.html">About Me</a>
-                    </li>
                     <li class="nav-item me-2">
                         <a class="nav-link @yield('articlesActive')"
                             href="{{ route('home.articles.index') }}">{{ __('Anime Terbaru') }}</a>
