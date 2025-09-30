@@ -61,7 +61,7 @@ class ProductController extends Controller // Nama kelas ProductController
             'price' => 'required|numeric|min:0',
             'discount' => 'nullable|numeric|min:0|max:100',
             'stock' => 'required|integer|min:0',
-            'sku' => 'nullable|string|unique:products,sku|max:255' . $product->id,
+            'sku' => 'nullable|string|max:255|unique:products,sku',
         ]);
 
         $imagePath = null;
@@ -77,7 +77,7 @@ class ProductController extends Controller // Nama kelas ProductController
             'meta_desc' => $request->meta_desc,
             'slug' => Str::slug($request->title),
             'description' => $request->description,
-            'image' => $request->imagePath,
+            'image' => $imagePath,
             'status' => $request->boolean('status'),
             'price' => $request->price,
             'discount' => $request->discount,
@@ -102,38 +102,37 @@ class ProductController extends Controller // Nama kelas ProductController
     public function update(Request $request, Product $product)
     {
         $request->validate([
-            'user_id' => 'required|exists:users,id', // User ID tetap divalidasi
             'jenis_id' => 'required|exists:jenis,id',
             'title' => 'required|string|max:255',
             'meta_desc' => 'nullable|string|max:255',
             'description' => 'required|string',
-            'image' => 'nullable|image|mimes:Jepg,png,Jpg,webp,gif|max:2048',
-            'status' => 'boolean',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,webp,gif|max:2048', // Sesuaikan jika ada upload file
+            'status' => 'nullable|boolean',
             'price' => 'required|numeric|min:0',
-            'discount' => 'nullable|integer|min:0|max:100',
+            'discount' => 'nullable|numeric|min:0|max:100',
             'stock' => 'required|integer|min:0',
-            'sku' => 'nullable|string|unique:products,sku,' . $product->id . '|max:255',
+            'sku' => 'nullable|string|max:255|unique:products,sku',
         ]);
 
-        $imagePath = null;
         if ($request->hasFile('image')) {
-            // Menyimpan langsung ke disk 'public' di folder 'articles'
             $imagePath = $request->file('image')->store('product', 'public');
+            $product->image = $imagePath;
         }
 
 
         $product->update([
-            'user_id' => $request->user_id,
+            'user_id' => Auth::id(), // ID user yang login
             'jenis_id' => $request->jenis_id,
             'title' => $request->title,
             'meta_desc' => $request->meta_desc,
+            'slug' => Str::slug($request->title),
             'description' => $request->description,
-            'image' => $request->image,
+            'image' => $imagePath,
             'status' => $request->boolean('status'),
             'price' => $request->price,
             'discount' => $request->discount,
             'stock' => $request->stock,
-            'sku' => $request->sku,
+            'sku' => $request->sku ?? strtoupper(Str::random(5)),
         ]);
 
         return redirect()->route('admin.products.index')->with('success', 'Produk berhasil diperbarui!');

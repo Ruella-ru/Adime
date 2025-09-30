@@ -17,7 +17,7 @@
     <!-- Main Content Section -->
     <section class="container-xl my-5">
         <div class="row gx-4">
-            <div class="col-lg-9">
+            <div class="col-lg-12">
                 <div class="row">
                     @forelse ($articles as $key => $val)
                         <div class="col-md-12 mb-3">
@@ -25,13 +25,13 @@
                                 <div class="row g-0">
                                     <div class="col-md-3">
                                         @if ($val->image)
-                                            <img class="img-fluid" style="height: 100%"
+                                            <img class="img-fluid" style="height: 100%; width: 300px;"
                                                 src="{{ asset('storage/' . $val->image) }}"
                                                 alt="Gambar Artikel: {{ $val->title }}">
                                         @else
                                             <div class="img-fluid d-flex align-items-center justify-content-center text-white-50"
                                                 style=" height: 100%; background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(13, 110, 253, 0.7)), url('https://wallpapercave.com/wp/wp10992174.png'); background-size: cover; background-position: center;">
-                                                MyBlog Image
+                                                Adime Image
                                             </div>
                                         @endif
                                     </div>

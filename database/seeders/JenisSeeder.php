@@ -1,6 +1,6 @@
 <?php
 
-namespace Database\Seeders; 
+namespace Database\Seeders;
 
 use App\Models\Jenis;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -14,7 +14,7 @@ class JenisSeeder extends Seeder
      */
     public function run(): void
     {
-        $jenis = ['Romance', 'Action', 'Fantasy', 'Slice of life', 'Horor'];
+        $jenis = ['Figur', 'Poster', 'Gantungan kunci', 'Stiker', 'Foto'];
 
         foreach ($jenis as $jenis) {
             Jenis::create([

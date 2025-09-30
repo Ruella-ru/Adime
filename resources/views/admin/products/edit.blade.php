@@ -21,7 +21,7 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
-                    Data Artikel
+                    Data Products
                 </div>
                 <div class="card-body">
                     <form action="{{ route('admin.products.update', $product->slug) }}" method="POST"

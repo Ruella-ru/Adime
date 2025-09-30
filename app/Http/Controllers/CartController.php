@@ -113,7 +113,7 @@ class CartController extends Controller
 
             $finalItemPrice = $itemPrice;
             if ($itemDiscount > 0) {
-                $discountAmountPerUnit = $itemPrice * $itemDiscount;
+                $discountAmountPerUnit = $itemPrice * ($itemDiscount / 100);
                 $finalItemPrice = $itemPrice - $discountAmountPerUnit;
             }
 
@@ -234,7 +234,7 @@ class CartController extends Controller
 
             $finalItemPrice = $itemPrice;
             if ($itemDiscount > 0) {
-                $discountAmountPerUnit = $itemPrice * $itemDiscount;
+                $discountAmountPerUnit = $itemPrice * ($itemDiscount / 100);
                 $finalItemPrice = $itemPrice - $discountAmountPerUnit;
             }
 
@@ -319,7 +319,7 @@ class CartController extends Controller
 
                 $finalItemPrice = $itemPrice;
                 if ($itemDiscount > 0) {
-                    $discountAmountPerUnit = $itemPrice * $itemDiscount;
+                    $discountAmountPerUnit = $itemPrice * ($itemDiscount / 100);
                     $finalItemPrice = $itemPrice - $discountAmountPerUnit;
                 }
 
@@ -373,7 +373,6 @@ class CartController extends Controller
             DB::commit();
 
             return redirect()->route('checkout.success', $order->order_number)->with('success', 'Pesanan Anda berhasil dibuat!');
-
         } catch (\Exception $e) {
             DB::rollBack();
             Log::error('Checkout failed: ' . $e->getMessage() . ' at ' . $e->getFile() . ':' . $e->getLine());

@@ -12,10 +12,10 @@ class DatabaseSeeder extends Seeder
     {
         // Panggil UserTableSeeder di sini
         $this->call(UserSeeder::class);
-        $this->call(CategorySeeder::class);
-        $this->call(JenisSeeder::class);
-        $this->call(ArticleSeeder::class);
-        $this->call(ProductSeeder::class);
-        $this->call(InformationSeeder::class);
+        // $this->call(CategorySeeder::class);
+        // $this->call(JenisSeeder::class);
+        // $this->call(ArticleSeeder::class);
+        // $this->call(ProductSeeder::class);
+        // $this->call(InformationSeeder::class);
     }
 }

@@ -15,14 +15,14 @@
 
     <section class="container-xl my-5">
         <div class="row gx-4">
-            <div class="col-lg-9">
+            <div class="col-lg-12">
                 <div class="row">
                     @forelse ($products as $key => $val)
                         <div class="col-md-3 mb-4"> {{-- Menggunakan col-md-4 untuk 3 kolom per baris --}}
                             <a href="{{ route('home.products.show', $val->slug) }}"
                                 class="card shadow-sm border-0 h-100 d-flex flex-column text-decoration-none text-dark position-relative overflow-hidden">
                                 @if ($val->image)
-                                    <img class="card-img-top img-fluid" style="height: 180px; object-fit: cover;"
+                                    <img class="card-img-top img-fluid" style="height: 300px; object-fit: cover;"
                                         src="{{ asset('storage/' . $val->image) }}"
                                         alt="Gambar Produk: {{ $val->title }}">
                                 @else

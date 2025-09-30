@@ -55,15 +55,17 @@
                                                 $itemPrice = $item->price_at_add;
                                                 $finalItemPrice = $itemPrice;
                                                 if ($item->discount_at_add > 0) {
-                                                    $discountAmountPerUnit = $itemPrice * $item->discount_at_add;
+                                                    $discountAmountPerUnit =
+                                                        $itemPrice * ($item->discount_at_add / 100);
                                                     $finalItemPrice = $itemPrice - $discountAmountPerUnit;
                                                 }
                                             @endphp
 
                                             @if ($item->discount_at_add > 0)
                                                 <p class="mb-0">
-                                                    <span class="badge bg-danger me-1">{{ $item->discount_at_add * 100 }}%
+                                                    <span class="badge bg-danger me-1">{{ $item->discount_at_add }}%
                                                         OFF</span>
+
                                                     <s
                                                         class="text-muted small">Rp{{ number_format($itemPrice, 0, ',', '.') }}</s>
                                                 </p>

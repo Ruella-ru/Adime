@@ -24,7 +24,7 @@
                                     <path d="M18 17h-7a2 2 0 0 1 -2 -2v-10a2 2 0 0 1 2 -2h4l5 5v7a2 2 0 0 1 -2 2z" />
                                     <path d="M16 17v2a2 2 0 0 1 -2 2h-7a2 2 0 0 1 -2 -2v-10a2 2 0 0 1 2 -2h2" />
                                 </svg>
-                                <span>MyBlog</span>
+                                <span>Adime</span>
                             </h2>
                             <hr>
                             <p class="text-center text-muted mb-4">Login ke Akun Anda</p>

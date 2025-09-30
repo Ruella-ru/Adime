@@ -20,7 +20,7 @@ class Category extends Model
         // Relasi One-to-Many dengan Product
     public function product()
     {
-        return $this->hasMany(Products::class);
+        return $this->hasMany(Product::class);
     }
 
 }
